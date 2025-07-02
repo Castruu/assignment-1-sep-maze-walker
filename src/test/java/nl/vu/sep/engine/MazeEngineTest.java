@@ -19,6 +19,13 @@ class MazeEngineTest {
     }
 
     @Test
+    void constructor_WithSeed10AndSize10AndInvalidPlayerCoordinate_ShouldThrow() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new MazeEngine(10, 10, new Coordinate(-1, -1))
+        );
+    }
+
+    @Test
     void movePlayer_From1x1ToNorth_ShouldThrowError() {
         MazeEngine engine = new MazeEngine(10, 10, new Coordinate(1, 1));
 
@@ -40,6 +47,16 @@ class MazeEngineTest {
     }
 
     @Test
+    void movePlayer_From1x1ToSouthWithWallIn1x2_ShouldThrow() {
+        MazeEngine engine = new MazeEngine(10, 10, new Coordinate(1, 1));
+        engine.getMaze().setCellType(new Coordinate(1, 2), CellType.WALL);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> engine.movePlayer(Direction.SOUTH)
+        );
+    }
+
+    @Test
     void isPlayerAtEndOfMaze_WithPlayerAt5x5OnMazeSize3_ShouldReturnTrue() {
         MazeEngine engine = new MazeEngine(10, 3, new Coordinate(5, 5));
 
@@ -47,6 +64,26 @@ class MazeEngineTest {
     }
 
 
+    @Test
+    void isPlayerAtEndOfMaze_WithPlayerAt4x4OnMazeSize3_ShouldReturnFalse() {
+        MazeEngine engine = new MazeEngine(10, 3, new Coordinate(4, 4));
+
+        assertFalse(engine.isPlayerInEndOfMaze());
+    }
+
+    @Test
+    void isPlayerAtEndOfMaze_WithPlayerAt4x5OnMazeSize3_ShouldReturnFalse() {
+        MazeEngine engine = new MazeEngine(10, 3, new Coordinate(4, 5));
+
+        assertFalse(engine.isPlayerInEndOfMaze());
+    }
+
+    @Test
+    void isPlayerAtEndOfMaze_WithPlayerAt5x4OnMazeSize3_ShouldReturnFalse() {
+        MazeEngine engine = new MazeEngine(10, 3, new Coordinate(5, 4));
+
+        assertFalse(engine.isPlayerInEndOfMaze());
+    }
 
 
 }
