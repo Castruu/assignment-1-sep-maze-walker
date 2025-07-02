@@ -1,0 +1,1 @@
+rootProject.name = "assignment-1-sep-maze-walker"
