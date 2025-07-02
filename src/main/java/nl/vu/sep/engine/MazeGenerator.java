@@ -38,7 +38,6 @@ public class MazeGenerator {
             if(maze.getCell(nextFrom).visited()) continue;
 
             Coordinate wallCoordinate = maze.calculateWallCoordinateFromDirection(from, direction);
-            if(maze.getCell(wallCoordinate).type() != CellType.WALL) continue;
 
             maze.setCellType(wallCoordinate, CellType.PATH);
             maze.markVisited(nextFrom);
