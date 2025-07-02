@@ -46,7 +46,7 @@ public class MazeGenerator {
         }
     }
 
-    public Direction[] sortDirections() {
+    private Direction[] sortDirections() {
         Direction[] directions = Direction.values().clone();
         for (int i = 0; i < SHUFFLING_CONSTANT; i++) {
             int newIndex = random.nextInt(Direction.values().length);

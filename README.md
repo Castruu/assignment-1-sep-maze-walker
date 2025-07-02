@@ -181,3 +181,7 @@ This test checks whether a player on the final position (for a 3 sized maze is a
 
 The 5 tests presented and their description show that every test added improves somehow to the reliability of the program.
 In case you are interested in seeing the full test suite, explore around the `test` folder.
+
+Proof of 100% coverage (excluding `MazeWalker.java`):
+
+![full-coverage.png](assets/full-coverage.png)
