@@ -53,16 +53,13 @@ public class Maze {
         return maze[coordinate.y()][coordinate.x()];
     }
 
+    /**
+     * Due to the fact of the walls being cells of the 2D grid called maze,
+     * this method returns the calculated by the formula size_passed_on_constructor * 2 + 1
+     * @return int maze.length calculated by validCells * 2 + 1
+     */
     public int getSize() {
         return maze.length;
-    }
-
-    public Cell[][] getMaze() {
-        Cell[][] mazeCopy = new Cell[this.maze.length][this.maze[0].length];
-        for (int i = 0; i < mazeCopy.length; i++) {
-            System.arraycopy(this.maze[i], 0, mazeCopy[i], 0, mazeCopy[0].length);
-        }
-        return mazeCopy;
     }
 
     @Override
